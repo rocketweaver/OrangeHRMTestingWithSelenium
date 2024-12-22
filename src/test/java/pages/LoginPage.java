@@ -6,22 +6,18 @@ import org.openqa.selenium.WebDriver;
 public class LoginPage {
     WebDriver driver;
 
-    By usernameField = By.name("username");
-    By passwordField = By.name("password");
-    By loginBtn = By.className("orangehrm-login-button");
-
     public LoginPage(WebDriver driver) {
         this.driver = driver;
     }
 
     public void login(String username, String password) {
         if(!username.trim().isEmpty()) {
-            driver.findElement(usernameField).sendKeys(username);
+            driver.findElement(By.name("username")).sendKeys(username);
         }
 
         if(!password.trim().isEmpty()) {
-            driver.findElement(passwordField).sendKeys(password);
+            driver.findElement(By.name("password")).sendKeys(password);
         }
-        driver.findElement(loginBtn).click();
+        driver.findElement(By.className("orangehrm-login-button")).click();
     }
 }
