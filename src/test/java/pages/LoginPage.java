@@ -15,8 +15,13 @@ public class LoginPage {
     }
 
     public void login(String username, String password) {
-        driver.findElement(usernameField).sendKeys(username);
-        driver.findElement(passwordField).sendKeys(password);
+        if(!username.trim().isEmpty()) {
+            driver.findElement(usernameField).sendKeys(username);
+        }
+
+        if(!password.trim().isEmpty()) {
+            driver.findElement(passwordField).sendKeys(password);
+        }
         driver.findElement(loginBtn).click();
     }
 }
