@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 
 import java.util.List;
 
@@ -187,5 +188,10 @@ public class PersonalDetailsPage {
         inputProfilePicture(this.filePath);
 
         driver.findElement(By.xpath("(//button[normalize-space()='Save'])[1]")).click();
+    }
+
+    public void compareErrorMsg(String errorType) {
+        String errorMessage = driver.findElement(By.className("oxd-input-field-error-message")).getText();
+        Assert.assertEquals(errorMessage, errorType);
     }
 }
