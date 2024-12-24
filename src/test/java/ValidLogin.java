@@ -23,6 +23,11 @@ public class ValidLogin {
         Thread.sleep(1000);
     }
 
+    @AfterMethod
+    public void stop() {
+        driver.quit();
+    }
+
     @Test (priority = 0)
     public void loginWithValidCredential() {
         loginPage.login("admin123", "a:@oN8N!E1!4");
