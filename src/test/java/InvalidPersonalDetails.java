@@ -62,7 +62,12 @@ public class InvalidPersonalDetails {
         personalDetailPage.setEmployeeId("0001");
         personalDetailPage.setOtherId("0002");
         personalDetailPage.setDriverLicense("H4H4BD");
-        personalDetailPage.setDay(29);
+        personalDetailPage.setDriverLicenseYear(2024);
+        personalDetailPage.setDriverLicenseMonth(10);
+        personalDetailPage.setDriverLicenseDay(29);
+        personalDetailPage.setBirthYear(2002);
+        personalDetailPage.setBirthMonth(10);
+        personalDetailPage.setBirthDay(12);;
         personalDetailPage.setGender("Female");
         personalDetailPage.updatePersonalDetails();
         personalDetailPage.compareErrorMsg("Required");
@@ -79,7 +84,12 @@ public class InvalidPersonalDetails {
         personalDetailPage.setEmployeeId("0001");
         personalDetailPage.setOtherId("0002");
         personalDetailPage.setDriverLicense("H4H4BD");
-        personalDetailPage.setDay(29);
+        personalDetailPage.setDriverLicenseYear(2024);
+        personalDetailPage.setDriverLicenseMonth(10);
+        personalDetailPage.setDriverLicenseDay(29);
+        personalDetailPage.setBirthYear(2002);
+        personalDetailPage.setBirthMonth(10);
+        personalDetailPage.setBirthDay(12);;
         personalDetailPage.setGender("Female");
         personalDetailPage.updatePersonalDetails();
         personalDetailPage.compareErrorMsg("Required");
@@ -96,7 +106,12 @@ public class InvalidPersonalDetails {
         personalDetailPage.setEmployeeId("0001");
         personalDetailPage.setOtherId("0002");
         personalDetailPage.setDriverLicense("H4H4BD");
-        personalDetailPage.setDay(29);
+        personalDetailPage.setDriverLicenseYear(2024);
+        personalDetailPage.setDriverLicenseMonth(10);
+        personalDetailPage.setDriverLicenseDay(29);
+        personalDetailPage.setBirthYear(2002);
+        personalDetailPage.setBirthMonth(10);
+        personalDetailPage.setBirthDay(12);;
         personalDetailPage.setGender("Female");
         personalDetailPage.updatePersonalDetails();
         personalDetailPage.compareErrorMsg("Should not exceed 30 characters");
@@ -113,7 +128,12 @@ public class InvalidPersonalDetails {
         personalDetailPage.setEmployeeId("0001");
         personalDetailPage.setOtherId("0002");
         personalDetailPage.setDriverLicense("H4H4BD");
-        personalDetailPage.setDay(29);
+        personalDetailPage.setDriverLicenseYear(2024);
+        personalDetailPage.setDriverLicenseMonth(10);
+        personalDetailPage.setDriverLicenseDay(29);
+        personalDetailPage.setBirthYear(2002);
+        personalDetailPage.setBirthMonth(10);
+        personalDetailPage.setBirthDay(12);;
         personalDetailPage.setGender("Female");
         personalDetailPage.updatePersonalDetails();
         personalDetailPage.compareErrorMsg("Should not exceed 30 characters");
@@ -130,7 +150,12 @@ public class InvalidPersonalDetails {
         personalDetailPage.setEmployeeId("0001");
         personalDetailPage.setOtherId("0002");
         personalDetailPage.setDriverLicense("H4H4BD");
-        personalDetailPage.setDay(29);
+        personalDetailPage.setDriverLicenseYear(2024);
+        personalDetailPage.setDriverLicenseMonth(10);
+        personalDetailPage.setDriverLicenseDay(29);
+        personalDetailPage.setBirthYear(2002);
+        personalDetailPage.setBirthMonth(10);
+        personalDetailPage.setBirthDay(12);;
         personalDetailPage.setGender("Female");
         personalDetailPage.updatePersonalDetails();
         personalDetailPage.compareErrorMsg("Should not exceed 30 characters");
@@ -147,7 +172,12 @@ public class InvalidPersonalDetails {
         personalDetailPage.setEmployeeId("0001");
         personalDetailPage.setOtherId("0002");
         personalDetailPage.setDriverLicense("H4H4BD");
-        personalDetailPage.setDay(29);
+        personalDetailPage.setDriverLicenseYear(2024);
+        personalDetailPage.setDriverLicenseMonth(10);
+        personalDetailPage.setDriverLicenseDay(29);
+        personalDetailPage.setBirthYear(2002);
+        personalDetailPage.setBirthMonth(10);
+        personalDetailPage.setBirthDay(12);;
         personalDetailPage.setGender("Female");
         personalDetailPage.updatePersonalDetails();
         personalDetailPage.compareErrorMsg("Invalid characters are not allowed");
@@ -164,7 +194,12 @@ public class InvalidPersonalDetails {
         personalDetailPage.setEmployeeId("0001");
         personalDetailPage.setOtherId("0002");
         personalDetailPage.setDriverLicense("H4H4BD");
-        personalDetailPage.setDay(29);
+        personalDetailPage.setDriverLicenseYear(2024);
+        personalDetailPage.setDriverLicenseMonth(10);
+        personalDetailPage.setDriverLicenseDay(29);
+        personalDetailPage.setBirthYear(2002);
+        personalDetailPage.setBirthMonth(10);
+        personalDetailPage.setBirthDay(12);;
         personalDetailPage.setGender("Female");
         personalDetailPage.updatePersonalDetails();
         personalDetailPage.compareErrorMsg("Invalid characters are not allowed");
@@ -181,7 +216,12 @@ public class InvalidPersonalDetails {
         personalDetailPage.setEmployeeId("00010001000100010001000100010001");
         personalDetailPage.setOtherId("0002");
         personalDetailPage.setDriverLicense("H4H4BD");
-        personalDetailPage.setDay(29);
+        personalDetailPage.setDriverLicenseYear(2024);
+        personalDetailPage.setDriverLicenseMonth(10);
+        personalDetailPage.setDriverLicenseDay(29);
+        personalDetailPage.setBirthYear(2002);
+        personalDetailPage.setBirthMonth(10);
+        personalDetailPage.setBirthDay(12);;
         personalDetailPage.setGender("Female");
         personalDetailPage.updatePersonalDetails();
         personalDetailPage.compareErrorMsg("Should not exceed 10 characters");
@@ -198,7 +238,12 @@ public class InvalidPersonalDetails {
         personalDetailPage.setEmployeeId("001");
         personalDetailPage.setOtherId("000100010001000100010001000100010001000100010001000100010001000100010001000100010001000100010001");
         personalDetailPage.setDriverLicense("H4H4BD");
-        personalDetailPage.setDay(29);
+        personalDetailPage.setDriverLicenseYear(2024);
+        personalDetailPage.setDriverLicenseMonth(10);
+        personalDetailPage.setDriverLicenseDay(29);
+        personalDetailPage.setBirthYear(2002);
+        personalDetailPage.setBirthMonth(10);
+        personalDetailPage.setBirthDay(12);;
         personalDetailPage.setGender("Female");
         personalDetailPage.updatePersonalDetails();
         personalDetailPage.compareErrorMsg("Should not exceed 30 characters");
@@ -215,10 +260,125 @@ public class InvalidPersonalDetails {
         personalDetailPage.setEmployeeId("001");
         personalDetailPage.setOtherId("0002");
         personalDetailPage.setDriverLicense("H4H4BDH4H4BDH4H4BDH4H4BDH4H4BDH4H4BDH4H4BDH4H4BD");
-        personalDetailPage.setDay(29);
+        personalDetailPage.setDriverLicenseYear(2024);
+        personalDetailPage.setDriverLicenseMonth(10);
+        personalDetailPage.setDriverLicenseDay(29);
+        personalDetailPage.setBirthYear(2002);
+        personalDetailPage.setBirthMonth(10);
+        personalDetailPage.setBirthDay(12);;
         personalDetailPage.setGender("Female");
         personalDetailPage.updatePersonalDetails();
         personalDetailPage.compareErrorMsg("Should not exceed 30 characters");
+    }
+
+    @Test (priority = 6, description = "Verify that updating personal details fail when Middle Name is using invalid format")
+    public void middleNameWithInvalidFormat() throws InterruptedException {
+        Thread.sleep(3000);
+        ((JavascriptExecutor) driver).executeScript("document.getElementsByClassName('oxd-form')[0].reset()");
+        personalDetailPage = new PersonalDetailsPage(driver);
+        personalDetailPage.setFirstName("Lisa");
+        personalDetailPage.setMiddleName("Putri");
+        personalDetailPage.setLastName("Jenaka");
+        personalDetailPage.setEmployeeId("0001");
+        personalDetailPage.setOtherId("0002");
+        personalDetailPage.setDriverLicense("H4H4BD");
+        personalDetailPage.setDriverLicenseYear(2024);
+        personalDetailPage.setDriverLicenseMonth(10);
+        personalDetailPage.setDriverLicenseDay(29);
+        personalDetailPage.setBirthYear(2002);
+        personalDetailPage.setBirthMonth(10);
+        personalDetailPage.setBirthDay(12);
+        personalDetailPage.setGender("Female");
+        personalDetailPage.updatePersonalDetails();
+        personalDetailPage.compareErrorMsg("Invalid characters are not allowed");
+    }
+
+    @Test (priority = 6, description = "Verify that updating personal details fail when Date of Birth is on the future or current")
+    public void inputFutureBirthDate() throws InterruptedException {
+        Thread.sleep(3000);
+        ((JavascriptExecutor) driver).executeScript("document.getElementsByClassName('oxd-form')[0].reset()");
+        personalDetailPage = new PersonalDetailsPage(driver);
+        personalDetailPage.setFirstName("Lisa");
+        personalDetailPage.setMiddleName("Putri");
+        personalDetailPage.setLastName("Jenaka");
+        personalDetailPage.setEmployeeId("0001");
+        personalDetailPage.setOtherId("0002");
+        personalDetailPage.setDriverLicense("H4H4BD");
+        personalDetailPage.setDriverLicenseYear(2024);
+        personalDetailPage.setDriverLicenseMonth(10);
+        personalDetailPage.setDriverLicenseDay(29);
+        personalDetailPage.setBirthYear(2026);
+        personalDetailPage.setBirthMonth(10);
+        personalDetailPage.setBirthDay(12);
+        personalDetailPage.setGender("Female");
+        personalDetailPage.updatePersonalDetails();
+        personalDetailPage.compareErrorMsg("Date of Birth cannot be in the future.");
+    }
+
+    @Test (priority = 7, description = "Verify that updating Personal Details fail when Driver License's Expiry Date is on the past")
+    public void inputFutureDriverLicenseExpiryDate() throws InterruptedException {
+        Thread.sleep(3000);
+        ((JavascriptExecutor) driver).executeScript("document.getElementsByClassName('oxd-form')[0].reset()");
+        personalDetailPage = new PersonalDetailsPage(driver);
+        personalDetailPage.setFirstName("Lisa");
+        personalDetailPage.setMiddleName("Putri");
+        personalDetailPage.setLastName("Jenaka");
+        personalDetailPage.setEmployeeId("0001");
+        personalDetailPage.setOtherId("0002");
+        personalDetailPage.setDriverLicense("H4H4BD");
+        personalDetailPage.setDriverLicenseYear(1997);
+        personalDetailPage.setDriverLicenseMonth(10);
+        personalDetailPage.setDriverLicenseDay(29);
+        personalDetailPage.setBirthYear(2002);
+        personalDetailPage.setBirthMonth(10);
+        personalDetailPage.setBirthDay(12);
+        personalDetailPage.setGender("Female");
+        personalDetailPage.updatePersonalDetails();
+        personalDetailPage.compareErrorMsg("Driver License Expiry Date cannot be in the future.");
+    }
+
+    @Test (priority = 8, description = "Verify that updating Personal Details fail when Driver License's Expiry Date is on invalid format.")
+    public void invalidFormatDriverLicenseExpiryDate() throws InterruptedException {
+        Thread.sleep(3000);
+        ((JavascriptExecutor) driver).executeScript("document.getElementsByClassName('oxd-form')[0].reset()");
+        personalDetailPage = new PersonalDetailsPage(driver);
+        personalDetailPage.setFirstName("Lisa");
+        personalDetailPage.setMiddleName("Putri");
+        personalDetailPage.setLastName("Jenaka");
+        personalDetailPage.setEmployeeId("0001");
+        personalDetailPage.setOtherId("0002");
+        personalDetailPage.setDriverLicense("H4H4BD");
+        personalDetailPage.setDriverLicenseYear(202200);
+        personalDetailPage.setDriverLicenseMonth(10);
+        personalDetailPage.setDriverLicenseDay(29);
+        personalDetailPage.setBirthYear(2004);
+        personalDetailPage.setBirthMonth(9);
+        personalDetailPage.setBirthDay(12);
+        personalDetailPage.setGender("Female");
+        personalDetailPage.updatePersonalDetails();
+        personalDetailPage.compareErrorMsg("Should be a valid date in yyyy-mm-dd format");
+    }
+
+    @Test (priority = 9, description = "Verify that updating Personal Details fail when Date of Birth is on invalid format.")
+    public void invalidFormatDateOfBirth() throws InterruptedException {
+        Thread.sleep(3000);
+        ((JavascriptExecutor) driver).executeScript("document.getElementsByClassName('oxd-form')[0].reset()");
+        personalDetailPage = new PersonalDetailsPage(driver);
+        personalDetailPage.setFirstName("Lisa");
+        personalDetailPage.setMiddleName("Putri");
+        personalDetailPage.setLastName("Jenaka");
+        personalDetailPage.setEmployeeId("0001");
+        personalDetailPage.setOtherId("0002");
+        personalDetailPage.setDriverLicense("H4H4BD");
+        personalDetailPage.setDriverLicenseYear(2024);
+        personalDetailPage.setDriverLicenseMonth(10);
+        personalDetailPage.setDriverLicenseDay(29);
+        personalDetailPage.setBirthYear(202);
+        personalDetailPage.setBirthMonth(33);
+        personalDetailPage.setBirthDay(12);
+        personalDetailPage.setGender("Female");
+        personalDetailPage.updatePersonalDetails();
+        personalDetailPage.compareErrorMsg("Should be a valid date in yyyy-mm-dd format");
     }
 
 //    @Test(priority = 2, description = "Upload attachment file.")

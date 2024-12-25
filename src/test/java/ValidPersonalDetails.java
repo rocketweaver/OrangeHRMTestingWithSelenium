@@ -2,7 +2,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.*;
@@ -62,7 +61,12 @@ public class ValidPersonalDetails {
         personalDetailPage.setEmployeeId("0001");
         personalDetailPage.setOtherId("0002");
         personalDetailPage.setDriverLicense("H4H4BD");
-        personalDetailPage.setDay(29);
+        personalDetailPage.setDriverLicenseYear(2024);
+        personalDetailPage.setDriverLicenseMonth(10);
+        personalDetailPage.setDriverLicenseDay(29);
+        personalDetailPage.setBirthYear(2002);
+        personalDetailPage.setBirthMonth(10);
+        personalDetailPage.setBirthDay(12);
         personalDetailPage.setGender("Female");
         personalDetailPage.updatePersonalDetails();
     }
