@@ -15,7 +15,7 @@ public class InvalidPersonalDetails {
     LoginPage loginPage;
     PersonalDetailsPage personalDetailPage;
 
-    @BeforeTest
+    @BeforeClass
     public void setup() throws InterruptedException {
         //Basic setup
         WebDriverManager.chromedriver().setup();
@@ -48,7 +48,7 @@ public class InvalidPersonalDetails {
         driver.navigate().refresh();
     }
 
-    @AfterTest
+    @AfterClass
     public void stop() {
         driver.quit();
     }
