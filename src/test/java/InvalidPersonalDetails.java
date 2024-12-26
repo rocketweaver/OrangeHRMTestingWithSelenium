@@ -381,28 +381,49 @@ public class InvalidPersonalDetails {
         personalDetailPage.compareErrorMsg("Should be a valid date in yyyy-mm-dd format");
     }
 
-//    @Test(priority = 2, description = "Upload attachment file.")
-//    public void uploadAttachmentFile() throws InterruptedException {
-//        Thread.sleep(3000);
-//        personalDetailPage = new PersonalDetailsPage(driver);
-//        personalDetailPage.setFilePath("/src/test/resources/500-KB.pdf");
-//        personalDetailPage.setComment("");
-//        personalDetailPage.addAttachmentFile();
-//    }
-//
-//    @Test(priority = 3, description = "Upload attachment file with comment.")
-//    public void uploadAttachmentFileWithComment() throws InterruptedException {
-//        Thread.sleep(3000);
-//        personalDetailPage = new PersonalDetailsPage(driver);
-//        personalDetailPage.setFilePath("/src/test/resources/500-KB.pdf");
-//        personalDetailPage.setComment("This is my first uploaded file");
-//        personalDetailPage.addAttachmentFile();
-//    }
-//
-//    @Test(priority = 4, description = "Upload profile picture.")
-//    public void uploadProfilePicture() throws InterruptedException {
-//        personalDetailPage = new PersonalDetailsPage(driver);
-//        personalDetailPage.setFilePath("/src/test/resources/profile2.jpg");
-//        personalDetailPage.uploadProfilePicture();
-//    }
+    @Test(priority = 10, description = "Verify that updating Attachment fails when trying to upload an unsupported file format")
+    public void uploadUnsupportedAttachment() throws InterruptedException {
+        Thread.sleep(3000);
+        personalDetailPage = new PersonalDetailsPage(driver);
+        personalDetailPage.setFilePath("/src/test/resources/unsupported_attachment.webp");
+        personalDetailPage.setComment("Test");
+        personalDetailPage.addAttachmentFile();
+        personalDetailPage.compareErrorMsg("File type not allowed");
+    }
+
+    @Test(priority = 11, description = "Verify that updating Attachment fails when trying to upload an unsupported file format")
+    public void attachmentCommentExceedingLimit() throws InterruptedException {
+        Thread.sleep(3000);
+        personalDetailPage = new PersonalDetailsPage(driver);
+        personalDetailPage.setFilePath("/src/test/resources/500-KB.pdf");
+        personalDetailPage.setComment("z8L3kpV5YqTdRJ1xmNW9GZoF2AsCXHb67EtM4ayQPwvDKgUjOcIfnBhrlz0uYXpJWQV5k8L3dRP29GTNCmKFoAMZ6ab7sEV1XYqh4tyJduwgkUoFxHrnvl0cMfqp2BC98PY3WJA6KToLRV57XGN1hzYEMa4tXyb9wdJkgqpUOHclM7F2N8rZv0oWXz8L3kpV5YqTdRJ1xmNW9GZoF2AsCXHb67EtM4ayQPwvDKgUjOcIfnBhrlz0uYXpJWQV5k8L3dRP29GTNCmKFoAMZ6ab7sEV1XYqh4tyJduwgkUoFxHrnvl0cMfqp2BC98PY3WJA6KToLRV57XGN1hzYEMa4tXyb9wdJkgqpUOHclM7F2N8rZv0oWXz8L3kpV5YqTdRJ1xmNW9GZoF2AsCXHb67EtM4ayQPwvDKgUjOcIfnBhrlz0uYXpJWQV5k8L3dRP29GTNCmKFoAMZ6ab7sEV1XYqh4tyJduwgkUoFxHrnvl0cMfqp2BC98PY3WJA6KToLRV57XGN1hzYEMa4tXyb9wdJkgqpUOHclM7F2N8rZv0oWX");
+        personalDetailPage.addAttachmentFile();
+        personalDetailPage.compareErrorMsg("Should not exceed 200 characters");
+    }
+
+    @Test(priority = 12, description = "Verify that updating attachment fails when uploading files larger than the allowed size limit (size > 1MB)")
+    public void attachmentFileExceedingSizeLimit() throws InterruptedException {
+        Thread.sleep(3000);
+        personalDetailPage = new PersonalDetailsPage(driver);
+        personalDetailPage.setFilePath("/src/test/resources/2mb.jpg");
+        personalDetailPage.setComment("Test");
+        personalDetailPage.addAttachmentFile();
+        personalDetailPage.compareErrorMsg("Attachment Size Exceeded");
+    }
+
+    @Test(priority = 13, description = "Verify that updating Profile Picture fails when trying to upload an unsupported file format")
+    public void uploadProfilePictureWithUnsupportedFormat() throws InterruptedException {
+        personalDetailPage = new PersonalDetailsPage(driver);
+        personalDetailPage.setFilePath("/src/test/resources/unsupported_attachment.webp");
+        personalDetailPage.uploadProfilePicture();
+        personalDetailPage.compareErrorMsg("File type not allowed");
+    }
+
+    @Test(priority = 14, description = "Verify that updating Profile Picture fails when uploading files larger than the allowed size limit (size > 1MB)")
+    public void profilePictureExceedingSizeLimit() throws InterruptedException {
+        personalDetailPage = new PersonalDetailsPage(driver);
+        personalDetailPage.setFilePath("/src/test/resources/2mb.jpg");
+        personalDetailPage.uploadProfilePicture();
+        personalDetailPage.compareErrorMsg("Attachment Size Exceeded");
+    }
 }
