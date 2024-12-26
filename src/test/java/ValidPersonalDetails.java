@@ -28,7 +28,9 @@ public class ValidPersonalDetails {
         //Login
         driver.get("http://orangehrm-5.7.test/auth/login");
         Thread.sleep(1000);
-        loginPage.login("admin123", "a:@oN8N!E1!4");
+        loginPage.setUsername("admin123");
+        loginPage.setPassword("a:@oN8N!E1!4");
+        loginPage.login();
 
         // Go to My Info page
         Thread.sleep(2500);

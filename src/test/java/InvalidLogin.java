@@ -12,8 +12,11 @@ public class InvalidLogin {
 
     @BeforeTest
     public void setup() throws InterruptedException {
+        //Basic setup
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+
+        // Go to login page
         loginPage = new LoginPage(driver);
         driver.get("http://orangehrm-5.7.test/auth/login");
     }
@@ -35,33 +38,37 @@ public class InvalidLogin {
 
     @Test (priority = 0)
     public void loginWithInvalidUsername() throws InterruptedException {
-        loginPage.login("admin__", "a:@oN8N!E1!4");
+        loginPage.setUsername("admin__");
+        loginPage.setPassword("a:@oN8N!E1!4");
+        loginPage.login();
         Thread.sleep(1000);
-        String errorMsg = driver.findElement(By.className("oxd-alert-content-text")).getText();
-        Assert.assertEquals(errorMsg, "Invalid credentials");
+        loginPage.compareErrorAlert("Invalid credentials");
     }
 
     @Test (priority = 1)
     public void loginWithInvalidPassword() throws InterruptedException {
-        loginPage.login("admin123", "password");
+        loginPage.setUsername("admin123");
+        loginPage.setPassword("123password");
+        loginPage.login();
         Thread.sleep(1000);
-        String errorMsg = driver.findElement(By.className("oxd-alert-content-text")).getText();
-        Assert.assertEquals(errorMsg, "Invalid credentials");
+        loginPage.compareErrorAlert("Invalid credentials");
     }
 
     @Test (priority = 2)
     public void loginWithEmptyUsername() throws InterruptedException {
-        loginPage.login("", "a:@oN8N!E1!4");
+        loginPage.setUsername("");
+        loginPage.setPassword("a:@oN8N!E1!4");
+        loginPage.login();
         Thread.sleep(1000);
-        String errorMsg = driver.findElement(By.className("oxd-input-field-error-message")).getText();
-        Assert.assertEquals(errorMsg, "Required");
+        loginPage.compareErrorMsg("Required");
     }
 
     @Test (priority = 3)
     public void loginWithEmptyPassword() throws InterruptedException {
-        loginPage.login("admin123", "");
+        loginPage.setUsername("admin123");
+        loginPage.setPassword("");
+        loginPage.login();
         Thread.sleep(1000);
-        String errorMsg = driver.findElement(By.className("oxd-input-field-error-message")).getText();
-        Assert.assertEquals(errorMsg, "Required");
+        loginPage.compareErrorMsg("Required");
     }
 }
