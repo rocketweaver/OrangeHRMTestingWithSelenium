@@ -13,6 +13,7 @@
     <test name="Personal Details Test">
         <classes>
             <class name="ValidPersonalDetails"/>
+            <class name="InvalidPersonalDetails"/>
         </classes>
     </test>
 </suite>
