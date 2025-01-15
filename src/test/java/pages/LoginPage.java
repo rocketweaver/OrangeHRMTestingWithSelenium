@@ -2,16 +2,24 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
+import java.time.Duration;
 
 public class LoginPage {
     WebDriver driver;
+    Wait<WebDriver> wait;
 
     String username;
     String password;
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
     }
 
     public void setUsername(String username) {
@@ -36,8 +44,8 @@ public class LoginPage {
 
     public void compareErrorMsg(String errorType) {
         try {
-            String errorMessage = driver.findElement(By.className("oxd-input-field-error-message")).getText();
-            Assert.assertEquals(errorMessage, errorType);
+            WebElement errorMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("oxd-input-field-error-message")));
+            Assert.assertEquals(errorMessage.getText(), errorType);
         } catch (AssertionError e) {
             // Log the error
             System.err.println("Assertion failed: " + e.getMessage());
@@ -46,8 +54,8 @@ public class LoginPage {
 
     public void compareErrorAlert(String errorType) {
         try {
-            String errorAlert = driver.findElement(By.className("oxd-alert-content-text")).getText();
-            Assert.assertEquals(errorAlert, errorType);
+            WebElement errorAlert = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("oxd-alert-content-text")));
+            Assert.assertEquals(errorAlert.getText(), errorType);
         } catch (AssertionError e) {
             // Log the error
             System.err.println("Assertion failed: " + e.getMessage());

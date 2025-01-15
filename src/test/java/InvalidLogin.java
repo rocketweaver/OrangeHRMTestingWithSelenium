@@ -1,17 +1,17 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.LoginPage;
+
+import java.time.Duration;
 
 public class InvalidLogin {
     WebDriver driver;
     LoginPage loginPage;
 
-    @BeforeTest
-    public void setup() throws InterruptedException {
+    @BeforeClass
+    public void setup(){
         //Basic setup
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
@@ -22,8 +22,8 @@ public class InvalidLogin {
     }
 
     @BeforeMethod
-    public void waitToSleep() throws InterruptedException {
-        Thread.sleep(1000);
+    public void loadPage(){
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
 
     @AfterMethod
@@ -31,7 +31,7 @@ public class InvalidLogin {
         driver.navigate().refresh();
     }
 
-    @AfterTest
+    @AfterClass
     public void stop() {
         driver.quit();
     }
@@ -41,7 +41,6 @@ public class InvalidLogin {
         loginPage.setUsername("admin__");
         loginPage.setPassword("a:@oN8N!E1!4");
         loginPage.login();
-        Thread.sleep(1000);
         loginPage.compareErrorAlert("Invalid credentials");
     }
 
@@ -50,7 +49,6 @@ public class InvalidLogin {
         loginPage.setUsername("admin123");
         loginPage.setPassword("123password");
         loginPage.login();
-        Thread.sleep(1000);
         loginPage.compareErrorAlert("Invalid credentials");
     }
 
@@ -59,7 +57,6 @@ public class InvalidLogin {
         loginPage.setUsername("");
         loginPage.setPassword("a:@oN8N!E1!4");
         loginPage.login();
-        Thread.sleep(1000);
         loginPage.compareErrorMsg("Required");
     }
 
@@ -68,7 +65,6 @@ public class InvalidLogin {
         loginPage.setUsername("admin123");
         loginPage.setPassword("");
         loginPage.login();
-        Thread.sleep(1000);
         loginPage.compareErrorMsg("Required");
     }
 }
