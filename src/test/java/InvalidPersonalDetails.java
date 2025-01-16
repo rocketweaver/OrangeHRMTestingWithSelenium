@@ -2,21 +2,28 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.LoginPage;
 import pages.PersonalDetailsPage;
 
+import java.time.Duration;
+
 public class InvalidPersonalDetails {
     WebDriver driver;
+    Wait<WebDriver> wait;
     Actions action;
     LoginPage loginPage;
     PersonalDetailsPage personalDetailPage;
 
     @BeforeClass
-    public void setup() throws InterruptedException {
+    public void setup() {
         //Basic setup
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
@@ -28,19 +35,20 @@ public class InvalidPersonalDetails {
 
         //Login
         driver.get("http://orangehrm-5.7.test/auth/login");
-        Thread.sleep(1000);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         loginPage.setUsername("admin123");
         loginPage.setPassword("a:@oN8N!E1!4");
         loginPage.login();
 
         // Go to My Info page
-        Thread.sleep(2500);
-        driver.findElement(By.xpath("//span[normalize-space()='My Info']")).click();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement myInfoLink = wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("My Info")));
+        myInfoLink.click();
     }
 
     @BeforeMethod
-    public void waitToSleep() throws InterruptedException {
-        Thread.sleep(1000);
+    public void loadPage() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
 
     @AfterMethod
@@ -54,9 +62,7 @@ public class InvalidPersonalDetails {
     }
 
     @Test (priority = 0, description = "Verify that updating personal details fail when First Name is empty.")
-    public void leaveFirstNameEmpty() throws InterruptedException {
-        Thread.sleep(3000);
-        ((JavascriptExecutor) driver).executeScript("document.getElementsByClassName('oxd-form')[0].reset()");
+    public void leaveFirstNameEmpty() {
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFirstName("");
         personalDetailPage.setMiddleName("Putri");
@@ -76,9 +82,7 @@ public class InvalidPersonalDetails {
     }
 
     @Test (priority = 2, description = "Verify that updating personal details fail when Last Name is empty.")
-    public void leaveLastNameEmpty() throws InterruptedException {
-        Thread.sleep(3000);
-        ((JavascriptExecutor) driver).executeScript("document.getElementsByClassName('oxd-form')[0].reset()");
+    public void leaveLastNameEmpty(){
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFirstName("Lisa");
         personalDetailPage.setMiddleName("Putri");
@@ -98,9 +102,7 @@ public class InvalidPersonalDetails {
     }
 
     @Test (priority = 3, description = "Verify that updating personal details fail when First Name is exceeding maximum characters (30 chars)")
-    public void firstNameExceedingLimit() throws InterruptedException {
-        Thread.sleep(3000);
-        ((JavascriptExecutor) driver).executeScript("document.getElementsByClassName('oxd-form')[0].reset()");
+    public void firstNameExceedingLimit() {
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFirstName("LisaLisaLisaLisaLisaLisaLisaLisaLisaLisa");
         personalDetailPage.setMiddleName("Putri");
@@ -120,9 +122,7 @@ public class InvalidPersonalDetails {
     }
 
     @Test (priority = 4, description = "Verify that updating personal details fail when Middle Name is exceeding maximum characters (30 chars)")
-    public void middleNameExceedingLimit() throws InterruptedException {
-        Thread.sleep(3000);
-        ((JavascriptExecutor) driver).executeScript("document.getElementsByClassName('oxd-form')[0].reset()");
+    public void middleNameExceedingLimit() {
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFirstName("Lisa");
         personalDetailPage.setMiddleName("Putri");
@@ -142,9 +142,7 @@ public class InvalidPersonalDetails {
     }
 
     @Test (priority = 4, description = "Verify that updating personal details fail when Middle Name is exceeding maximum characters (30 chars)")
-    public void lastNameExceedingLimit() throws InterruptedException {
-        Thread.sleep(3000);
-        ((JavascriptExecutor) driver).executeScript("document.getElementsByClassName('oxd-form')[0].reset()");
+    public void lastNameExceedingLimit() {
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFirstName("Lisa");
         personalDetailPage.setMiddleName("PutriPutriPutriPutriPutriPutriPutriPutriPutriPutri");
@@ -164,9 +162,7 @@ public class InvalidPersonalDetails {
     }
 
     @Test (priority = 5, description = "Verify that updating personal details fail when First Name is using invalid format")
-    public void firstNameWithInvalidFormat() throws InterruptedException {
-        Thread.sleep(3000);
-        ((JavascriptExecutor) driver).executeScript("document.getElementsByClassName('oxd-form')[0].reset()");
+    public void firstNameWithInvalidFormat() {
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFirstName("Lis44");
         personalDetailPage.setMiddleName("Putri");
@@ -186,9 +182,7 @@ public class InvalidPersonalDetails {
     }
 
     @Test (priority = 6, description = "Verify that updating personal details fail when Last Name is using invalid format")
-    public void lastNameWithInvalidFormat() throws InterruptedException {
-        Thread.sleep(3000);
-        ((JavascriptExecutor) driver).executeScript("document.getElementsByClassName('oxd-form')[0].reset()");
+    public void lastNameWithInvalidFormat() {
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFirstName("Lisa");
         personalDetailPage.setMiddleName("Putri");
@@ -208,9 +202,7 @@ public class InvalidPersonalDetails {
     }
 
     @Test (priority = 7, description = "Verify that updating personal details fail when Employee Id is exceeding maximum characters (10 chars)")
-    public void employeeIdExceedingLimit() throws InterruptedException {
-        Thread.sleep(3000);
-        ((JavascriptExecutor) driver).executeScript("document.getElementsByClassName('oxd-form')[0].reset()");
+    public void employeeIdExceedingLimit() {
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFirstName("Lisa");
         personalDetailPage.setMiddleName("Putri");
@@ -230,9 +222,7 @@ public class InvalidPersonalDetails {
     }
 
     @Test (priority = 8, description = "Verify that updating personal details fail when Other Id is exceeding maximum characters (30 chars)")
-    public void otherIdExceedingLimit() throws InterruptedException {
-        Thread.sleep(3000);
-        ((JavascriptExecutor) driver).executeScript("document.getElementsByClassName('oxd-form')[0].reset()");
+    public void otherIdExceedingLimit() {
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFirstName("Lisa");
         personalDetailPage.setMiddleName("Putri");
@@ -252,9 +242,7 @@ public class InvalidPersonalDetails {
     }
 
     @Test (priority = 9, description = "Verify that updating personal details fail when Driver License is exceeding maximum characters (30 chars)")
-    public void driverLicenseExceedingLimit() throws InterruptedException {
-        Thread.sleep(3000);
-        ((JavascriptExecutor) driver).executeScript("document.getElementsByClassName('oxd-form')[0].reset()");
+    public void driverLicenseExceedingLimit() {
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFirstName("Lisa");
         personalDetailPage.setMiddleName("Putri");
@@ -274,9 +262,8 @@ public class InvalidPersonalDetails {
     }
 
     @Test (priority = 6, description = "Verify that updating personal details fail when Middle Name is using invalid format")
-    public void middleNameWithInvalidFormat() throws InterruptedException {
-        Thread.sleep(3000);
-        ((JavascriptExecutor) driver).executeScript("document.getElementsByClassName('oxd-form')[0].reset()");
+    public void middleNameWithInvalidFormat() {
+
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFirstName("Lisa");
         personalDetailPage.setMiddleName("Putri");
@@ -296,9 +283,8 @@ public class InvalidPersonalDetails {
     }
 
     @Test (priority = 6, description = "Verify that updating personal details fail when Date of Birth is on the future or current")
-    public void inputFutureBirthDate() throws InterruptedException {
-        Thread.sleep(3000);
-        ((JavascriptExecutor) driver).executeScript("document.getElementsByClassName('oxd-form')[0].reset()");
+    public void inputFutureBirthDate() {
+
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFirstName("Lisa");
         personalDetailPage.setMiddleName("Putri");
@@ -318,9 +304,7 @@ public class InvalidPersonalDetails {
     }
 
     @Test (priority = 7, description = "Verify that updating Personal Details fail when Driver License's Expiry Date is on the past")
-    public void inputFutureDriverLicenseExpiryDate() throws InterruptedException {
-        Thread.sleep(3000);
-        ((JavascriptExecutor) driver).executeScript("document.getElementsByClassName('oxd-form')[0].reset()");
+    public void inputFutureDriverLicenseExpiryDate() {
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFirstName("Lisa");
         personalDetailPage.setMiddleName("Putri");
@@ -340,9 +324,7 @@ public class InvalidPersonalDetails {
     }
 
     @Test (priority = 8, description = "Verify that updating Personal Details fail when Driver License's Expiry Date is on invalid format.")
-    public void invalidFormatDriverLicenseExpiryDate() throws InterruptedException {
-        Thread.sleep(3000);
-        ((JavascriptExecutor) driver).executeScript("document.getElementsByClassName('oxd-form')[0].reset()");
+    public void invalidFormatDriverLicenseExpiryDate() {
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFirstName("Lisa");
         personalDetailPage.setMiddleName("Putri");
@@ -362,9 +344,7 @@ public class InvalidPersonalDetails {
     }
 
     @Test (priority = 9, description = "Verify that updating Personal Details fail when Date of Birth is on invalid format.")
-    public void invalidFormatDateOfBirth() throws InterruptedException {
-        Thread.sleep(3000);
-        ((JavascriptExecutor) driver).executeScript("document.getElementsByClassName('oxd-form')[0].reset()");
+    public void invalidFormatDateOfBirth() {
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFirstName("Lisa");
         personalDetailPage.setMiddleName("Putri");
@@ -384,8 +364,7 @@ public class InvalidPersonalDetails {
     }
 
     @Test(priority = 10, description = "Verify that updating Attachment fails when trying to upload an unsupported file format")
-    public void uploadUnsupportedAttachment() throws InterruptedException {
-        Thread.sleep(3000);
+    public void uploadUnsupportedAttachment() {
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFilePath("/src/test/resources/unsupported_attachment.webp");
         personalDetailPage.setComment("Test");
@@ -394,8 +373,7 @@ public class InvalidPersonalDetails {
     }
 
     @Test(priority = 11, description = "Verify that updating Attachment fails when trying to upload an unsupported file format")
-    public void attachmentCommentExceedingLimit() throws InterruptedException {
-        Thread.sleep(3000);
+    public void attachmentCommentExceedingLimit() {
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFilePath("/src/test/resources/500-KB.pdf");
         personalDetailPage.setComment("z8L3kpV5YqTdRJ1xmNW9GZoF2AsCXHb67EtM4ayQPwvDKgUjOcIfnBhrlz0uYXpJWQV5k8L3dRP29GTNCmKFoAMZ6ab7sEV1XYqh4tyJduwgkUoFxHrnvl0cMfqp2BC98PY3WJA6KToLRV57XGN1hzYEMa4tXyb9wdJkgqpUOHclM7F2N8rZv0oWXz8L3kpV5YqTdRJ1xmNW9GZoF2AsCXHb67EtM4ayQPwvDKgUjOcIfnBhrlz0uYXpJWQV5k8L3dRP29GTNCmKFoAMZ6ab7sEV1XYqh4tyJduwgkUoFxHrnvl0cMfqp2BC98PY3WJA6KToLRV57XGN1hzYEMa4tXyb9wdJkgqpUOHclM7F2N8rZv0oWXz8L3kpV5YqTdRJ1xmNW9GZoF2AsCXHb67EtM4ayQPwvDKgUjOcIfnBhrlz0uYXpJWQV5k8L3dRP29GTNCmKFoAMZ6ab7sEV1XYqh4tyJduwgkUoFxHrnvl0cMfqp2BC98PY3WJA6KToLRV57XGN1hzYEMa4tXyb9wdJkgqpUOHclM7F2N8rZv0oWX");
@@ -404,8 +382,7 @@ public class InvalidPersonalDetails {
     }
 
     @Test(priority = 12, description = "Verify that updating attachment fails when uploading files larger than the allowed size limit (size > 1MB)")
-    public void attachmentFileExceedingSizeLimit() throws InterruptedException {
-        Thread.sleep(3000);
+    public void attachmentFileExceedingSizeLimit() {
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFilePath("/src/test/resources/2mb.jpg");
         personalDetailPage.setComment("Test");
@@ -414,7 +391,7 @@ public class InvalidPersonalDetails {
     }
 
     @Test(priority = 13, description = "Verify that updating Profile Picture fails when trying to upload an unsupported file format")
-    public void uploadProfilePictureWithUnsupportedFormat() throws InterruptedException {
+    public void uploadProfilePictureWithUnsupportedFormat() {
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFilePath("/src/test/resources/unsupported_attachment.webp");
         personalDetailPage.uploadProfilePicture();
@@ -422,7 +399,7 @@ public class InvalidPersonalDetails {
     }
 
     @Test(priority = 14, description = "Verify that updating Profile Picture fails when uploading files larger than the allowed size limit (size > 1MB)")
-    public void profilePictureExceedingSizeLimit() throws InterruptedException {
+    public void profilePictureExceedingSizeLimit() {
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFilePath("/src/test/resources/2mb.jpg");
         personalDetailPage.uploadProfilePicture();

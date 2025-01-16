@@ -1,15 +1,21 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 import pages.LoginPage;
 import pages.PersonalDetailsPage;
 
+import java.time.Duration;
+
 public class ValidPersonalDetails {
     WebDriver driver;
+    Wait<WebDriver> wait;
     Actions action;
     LoginPage loginPage;
     PersonalDetailsPage personalDetailPage;
@@ -27,19 +33,20 @@ public class ValidPersonalDetails {
 
         //Login
         driver.get("http://orangehrm-5.7.test/auth/login");
-        Thread.sleep(1000);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         loginPage.setUsername("admin123");
         loginPage.setPassword("a:@oN8N!E1!4");
         loginPage.login();
 
         // Go to My Info page
-        Thread.sleep(2500);
-        driver.findElement(By.xpath("//span[normalize-space()='My Info']")).click();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement myInfoLink = wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("My Info")));
+        myInfoLink.click();
     }
 
     @BeforeMethod
-    public void waitToSleep() throws InterruptedException {
-        Thread.sleep(1000);
+    public void loadPage() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
 
     @AfterMethod
@@ -53,15 +60,13 @@ public class ValidPersonalDetails {
     }
 
     @Test (priority = 0, description = "Update personal details data with all optional fields.")
-    public void submitPersonalDetailsWithOptionalFields() throws InterruptedException {
-        Thread.sleep(3000);
-        ((JavascriptExecutor) driver).executeScript("document.getElementsByClassName('oxd-form')[0].reset()");
+    public void submitPersonalDetailsWithOptionalFields() {
         personalDetailPage = new PersonalDetailsPage(driver);
-        personalDetailPage.setFirstName("Lewyn");
-        personalDetailPage.setMiddleName("Putri");
-        personalDetailPage.setLastName("Jenaka");
-        personalDetailPage.setEmployeeId("0001");
-        personalDetailPage.setOtherId("0002");
+        personalDetailPage.setFirstName("Lisa");
+        personalDetailPage.setMiddleName("Melisa");
+        personalDetailPage.setLastName("Alisa");
+        personalDetailPage.setEmployeeId("0003");
+        personalDetailPage.setOtherId("0003");
         personalDetailPage.setDriverLicense("H4H4BD");
         personalDetailPage.setDriverLicenseYear(2024);
         personalDetailPage.setDriverLicenseMonth(10);
@@ -74,9 +79,7 @@ public class ValidPersonalDetails {
     }
 
     @Test (priority = 1, description = "Update personal details data with only required fields.")
-    public void submitPersonalDetailsWithRequiredOnly() throws InterruptedException {
-        Thread.sleep(3000);
-        ((JavascriptExecutor) driver).executeScript("document.getElementsByClassName('oxd-form')[0].reset()");
+    public void submitPersonalDetailsWithRequiredOnly(){
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFirstName("Bruce");
         personalDetailPage.setLastName("Wayn");
@@ -84,8 +87,7 @@ public class ValidPersonalDetails {
     }
 
     @Test(priority = 2, description = "Upload attachment file.")
-    public void uploadAttachmentFile() throws InterruptedException {
-        Thread.sleep(3000);
+    public void uploadAttachmentFile() {
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFilePath("/src/test/resources/500-KB.pdf");
         personalDetailPage.setComment("");
@@ -93,8 +95,7 @@ public class ValidPersonalDetails {
     }
 
     @Test(priority = 3, description = "Upload attachment file with comment.")
-    public void uploadAttachmentFileWithComment() throws InterruptedException {
-        Thread.sleep(3000);
+    public void uploadAttachmentFileWithComment() {
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFilePath("/src/test/resources/500-KB.pdf");
         personalDetailPage.setComment("This is my first uploaded file");
@@ -102,7 +103,7 @@ public class ValidPersonalDetails {
     }
 
     @Test(priority = 4, description = "Upload profile picture.")
-    public void uploadProfilePicture() throws InterruptedException {
+    public void uploadProfilePicture() {
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFilePath("/src/test/resources/profile2.jpg");
         personalDetailPage.uploadProfilePicture();
