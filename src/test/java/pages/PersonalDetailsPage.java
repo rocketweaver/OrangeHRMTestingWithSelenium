@@ -1,9 +1,6 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -28,12 +25,12 @@ public class PersonalDetailsPage {
     String maritalStatus;
     String filePath;
     String comment;
+    String driverLicenseMonth;
+    String driverLicenseYear;
+    String birthYear;
+    String birthMonth;
 
     int driverLicenseDay;
-    int driverLicenseMonth;
-    int driverLicenseYear;
-    int birthYear;
-    int birthMonth;
     int birthDay;
 
     public PersonalDetailsPage(WebDriver driver) {
@@ -75,39 +72,27 @@ public class PersonalDetailsPage {
         this.maritalStatus = maritalStatus;
     }
 
-    public void setDriverLicenseYear(int year) {
+    public void setDriverLicenseYear(String year) {
         this.driverLicenseYear = year;
     }
 
-    public void setDriverLicenseMonth(int month) {
+    public void setDriverLicenseMonth(String month) {
         this.driverLicenseMonth = month;
     }
 
     public void setDriverLicenseDay(int day) { this.driverLicenseDay = day; }
 
-    public void setBirthYear(int year) {
-        this.birthYear = year;
-    }
+    public void setBirthYear(String  year) { this.birthYear = year; }
 
-    public void setBirthMonth(int month) {
-        this.birthMonth = month;
-    }
+    public void setBirthMonth(String month) { this.birthMonth = month; }
 
-    public void setBirthDay(int day) {
-        this.birthDay = day;
-    }
+    public void setBirthDay(int day) { this.birthDay = day; }
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
+    public void setGender(String gender) { this.gender = gender; }
 
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
-    }
+    public void setFilePath(String filePath) { this.filePath = filePath; }
 
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
+    public void setComment(String comment) { this.comment = comment; }
 
     private By getInputByLabel(String label) {
         return By.xpath("//label[contains(text(), '" + label + "')]/ancestor::div[contains(@class, 'oxd-input-group')]//input");
@@ -117,67 +102,139 @@ public class PersonalDetailsPage {
         return By.xpath("//label[contains(text(), '" + label + "')]/ancestor::div[contains(@class, 'oxd-input-group')]//div[contains(@class, 'oxd-select-text')]");
     }
 
+    private By getDateInputByLabel(String label) {
+        return By.xpath("//label[contains(text(), '" + label + "')]/ancestor::div[contains(@class, 'oxd-input-group')]//input[contains(@placeholder, 'yyyy-dd-mm')]");
+    }
+
     private WebElement getSubmitBtnByParentClass(String parentClass) {
         WebElement formContainer = driver.findElement(By.cssSelector(parentClass));
         return formContainer.findElement(By.cssSelector("button[type='submit']"));
     }
 
-    private void resetForm() {
+    private void waitPageToLoad() {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("oxd-loading-spinner")));
-        ((JavascriptExecutor) driver).executeScript("document.getElementsByClassName('oxd-form')[0].reset()");
     }
 
     public void inputFullname(String firstName, String middleName, String lastName) {
+        WebElement firstNameInput = driver.findElement(By.cssSelector("[placeholder='First Name']"));
+        WebElement middleNameInput = driver.findElement(By.cssSelector("[placeholder='Middle Name']"));
+        WebElement lastNameInput = driver.findElement(By.cssSelector("[placeholder='Last Name']"));
+
+        firstNameInput.sendKeys(Keys.CONTROL,"a",Keys.DELETE);
+        middleNameInput.sendKeys(Keys.CONTROL,"a",Keys.DELETE);
+        lastNameInput.sendKeys(Keys.CONTROL,"a",Keys.DELETE);
+
         if(!firstName.trim().isEmpty()) {
-            driver.findElement(By.cssSelector("[placeholder='First Name']")).sendKeys(firstName);
+            firstNameInput.sendKeys(firstName);
         }
 
         if(!middleName.trim().isEmpty()) {
-            driver.findElement(By.cssSelector("[placeholder='Middle Name']")).sendKeys(middleName);
+            middleNameInput.sendKeys(middleName);
         }
 
         if(!lastName.trim().isEmpty()) {
-            driver.findElement(By.cssSelector("[placeholder='Last Name']")).sendKeys(lastName);
+            lastNameInput.sendKeys(lastName);
         }
     }
 
     public void inputEmployeeIds(String employeeId, String otherId) {
+        WebElement employeeIdInput = driver.findElement(getInputByLabel("Employee Id"));
+        WebElement otherIdInput = driver.findElement(getInputByLabel("Other Id"));
+
+        employeeIdInput.sendKeys(Keys.CONTROL,"a",Keys.DELETE);
+        otherIdInput.sendKeys(Keys.CONTROL,"a",Keys.DELETE);
+
         if(!employeeId.trim().isEmpty()) {
-            driver.findElement(getInputByLabel("Employee Id")).sendKeys(employeeId);
+            employeeIdInput.sendKeys(employeeId);
         }
 
         if(!otherId.trim().isEmpty()) {
-            driver.findElement(getInputByLabel("Other Id")).sendKeys(otherId);
+            otherIdInput.sendKeys(otherId);
         }
     }
 
-    public void inputDate(int dateInputIndex, int year, int month, int day) {
-        List<WebElement> dateInputs = driver.findElements(By.cssSelector("[placeholder='yyyy-mm-dd']"));
-        WebElement dateInput = dateInputs.get(dateInputIndex);
+    public void inputDate(String label, String year, String month, int day) {
+        WebElement dateInput = driver.findElement(getInputByLabel(label));
+        dateInput.sendKeys(Keys.CONTROL,"a",Keys.DELETE);
         dateInput.sendKeys(year + "-" + month +"-" + day);
     }
 
-    public void inputDriverLicense(String driverLicense, int dateInputIndex, int year, int month, int day) {
+    public void inputDriverLicense(String driverLicense, String year, String month, int day) {
+        WebElement driverLicenseInput = driver.findElement(getInputByLabel("License Number"));
+
         if(!driverLicense.isEmpty()) {
-            driver.findElement(getInputByLabel("License Number")).sendKeys(driverLicense);
+            driverLicenseInput.sendKeys(Keys.CONTROL,"a",Keys.DELETE);
+            driverLicenseInput.sendKeys(driverLicense);
         }
 
-        inputDate(dateInputIndex, year, month, day);
+        inputDate("License Expiry Date", year, month, day);
     }
 
     public void selectOption(String label, String optionVal) {
         driver.findElement(getSelectInputByLabel(label)).click();
 
-        By optionList = By.className("oxd-select-dropdown");
-        WebElement optionContainer = wait.until(ExpectedConditions.visibilityOfElementLocated(optionList));
+        By optionListContainer = By.className("oxd-select-dropdown");
+        WebElement optionContainer = wait.until(ExpectedConditions.visibilityOfElementLocated(optionListContainer));
 
-        By selectedOption = By.xpath("//span[contains(text(), '"+ optionVal +"')]");
-        optionContainer.findElement(selectedOption).click();
+        boolean optionSelected = false;
+        while (!optionSelected) {
+            try {
+                List<WebElement> options = optionContainer.findElements(By.cssSelector("[role='option']"));
+                for (WebElement option : options) {
+                    if (option.getText().equals(optionVal)) {
+                        option.click();
+                        optionSelected = true;
+                        break;
+                    }
+                }
+            } catch (StaleElementReferenceException e) {
+                // Re-locate the option container if stale
+                optionContainer = wait.until(ExpectedConditions.visibilityOfElementLocated(optionListContainer));
+            }
+        }
     }
 
-    public void selectDate(int calendarToggler, int day) {
-        driver.findElement(By.xpath("(//i[@class='oxd-icon bi-calendar oxd-date-input-icon'])["+ calendarToggler +"]")).click();
-        driver.findElement(By.xpath("(//div[@class='oxd-calendar-date'][normalize-space()='" + day + "'])[1]")).click();
+    public void selectMonthOrYear(String type, String optionVal) {
+        // Still under development
+
+        WebElement selectInput = driver.findElement(By.className("oxd-calendar-selector-" + type));
+        selectInput.click();
+
+        By optionListContainer = By.className("oxd-calendar-dropdown");
+        WebElement optionContainer = wait.until(ExpectedConditions.visibilityOfElementLocated(optionListContainer));
+
+        boolean optionSelected = false;
+        while (!optionSelected) {
+            try {
+                List<WebElement> options = optionContainer.findElements(By.className("oxd-calendar-dropdown--option"));
+                for (WebElement option : options) {
+                    if (option.getText().equals(optionVal)) {
+                        option.click();
+                        optionSelected = true;
+                        break;
+
+                    }
+                }
+            } catch (StaleElementReferenceException e) {
+                // Re-locate the option container if stale
+                optionContainer = wait.until(ExpectedConditions.visibilityOfElementLocated(optionListContainer));
+            }
+        }
+
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(optionListContainer));
+    }
+
+
+    public void selectDate(String dateLabel, int day, String month, String year) {
+        // Still under development
+
+        driver.findElement(getDateInputByLabel(dateLabel)).click();
+
+        selectMonthOrYear("month", month);
+        selectMonthOrYear("year", year);
+
+        WebElement selectedDay = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='oxd-calendar-date'][normalize-space()='" + day + "'])")));
+        selectedDay.click();
     }
 
     public void selectGender(String gender) {
@@ -186,25 +243,33 @@ public class PersonalDetailsPage {
         }
     }
 
-    public void updatePersonalDetails() {
-        resetForm();
+    public void updatePersonalDetails(boolean isSuccess) {
+        waitPageToLoad();
 
         inputFullname(firstName, middleName, lastName);
         inputEmployeeIds(employeeId, otherId);
-        inputDriverLicense(driverLicense, 0, driverLicenseYear, driverLicenseMonth, driverLicenseDay);
-        inputDate(1, birthYear, birthMonth, birthDay);
+        inputDriverLicense(driverLicense, driverLicenseYear, driverLicenseMonth, driverLicenseDay);
+        inputDate("Date of Birth", birthYear, birthMonth, birthDay);
+        selectOption("Nationality", nationality);
+        selectOption("Marital Status", maritalStatus);
         selectGender(gender);
 
         WebElement submitBtn = getSubmitBtnByParentClass(".orangehrm-horizontal-padding");
         submitBtn.click();
+
+        if(isSuccess == true) {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("oxd-toast--success")));
+        }
     }
 
     public void updateRequiredOnlyPersonalDetails() {
-        resetForm();
+        waitPageToLoad();
+
         inputFullname(firstName, "", lastName);
 
         WebElement submitBtn = getSubmitBtnByParentClass(".orangehrm-horizontal-padding");
         submitBtn.click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("oxd-toast--success")));
     }
 
     public void inputFile(String file) {
@@ -233,8 +298,8 @@ public class PersonalDetailsPage {
         fileInput.sendKeys(filePath);
     }
 
-    public void addAttachmentFile() {
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("oxd-loading-spinner")));
+    public void addAttachmentFile(boolean isSuccess) {
+        waitPageToLoad();
 
         WebElement addAttachmentSection = driver.findElement(By.className("bi-plus"));
         action.moveToElement(addAttachmentSection).perform();
@@ -247,17 +312,23 @@ public class PersonalDetailsPage {
         inputComment(comment);
 
         submitBtn.click();
+        if(isSuccess == true) {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("oxd-toast--success")));
+        }
     }
 
-    public void uploadProfilePicture() {
+    public void uploadProfilePicture(boolean isSuccess) {
         driver.findElement(By.className("orangehrm-edit-employee-image")).click();
 
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("oxd-loading-spinner")));
+        waitPageToLoad();
 
         inputProfilePicture(filePath);
 
         WebElement submitBtn = getSubmitBtnByParentClass(".orangehrm-edit-employee-content");
         submitBtn.click();
+        if(isSuccess == true) {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("oxd-toast--success")));
+        }
     }
 
     public void compareErrorMsg(String errorType) {

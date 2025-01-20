@@ -15,10 +15,11 @@ public class InvalidLogin {
         //Basic setup
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
 
         // Go to login page
         loginPage = new LoginPage(driver);
-        driver.get("http://orangehrm-5.7.test/auth/login");
+        driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
     }
 
     @BeforeMethod

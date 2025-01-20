@@ -22,13 +22,16 @@ This project uses the following tools and technologies:
 - **Web Server:** Laragon
 - **Application Under Test:** Orange HRM v5.7
 - **Driver:** ChromeDriver
+- **OrangeHRM:** v5.7 (Optional)
 
 ---
 
 ## Installation
 
-### Setting up Orange HRM
+### Setting up Orange HRM (Optional)
 Refer to the official guide: [Orange HRM Starter Installation Guide](https://starterhelp.orangehrm.com/hc/en-us/articles/5295915003666-OrangeHRM-Starter-Installation-Guide).
+<br>
+<small>**Note**: Only if you want to run Orange HRM locally.</small>
 
 ### Running Tests
 1. Install project dependencies listed in `pom.xml`.
@@ -38,14 +41,8 @@ Refer to the official guide: [Orange HRM Starter Installation Guide](https://sta
 
 ## Project Resources
 
-| **Resource**        | **Description**                                | **Link**                                                                                                                                            |  
-|----------------------|------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|  
-| **Orange HRM v5.7** | The primary application under test.             | [Orange HRM Installation Guide](https://starterhelp.orangehrm.com/hc/en-us/articles/5295915003666-OrangeHRM-Starter-Installation-Guide)             |  
-| **Test Scenarios**   | Trello board detailing test scenarios.         | [View on Trello](https://trello.com/invite/b/670f2e3a03f362e09e2abb63/ATTI78fe058e2b7c53a4dc9f7198a9f9980947A758DC/writing-test-scenarios-training) |  
-| **Test Cases**       | Spreadsheet of manually written test cases.    | [View Test Cases](https://docs.google.com/spreadsheets/d/1_Be5xfs6CQ5xRMDp_2p4yimslOD6HNBFk2HHFUVuTjE/edit?usp=sharing)                             |  
-
----
-
-## Notes
-
-This project is a work in progress, and new features or updates may be added over time.  
+| **Resource**             | **Description**                                | **Link**                                                                                                                                            |  
+|--------------------------|------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|  
+| **Orange HRM Live Demo** | The primary application under test.             | [Orange HRM Live Demo App](https://opensource-demo.orangehrmlive.com/web/index.php/auth/login)                                                      |  
+| **Test Scenarios**       | Trello board detailing test scenarios.         | [View on Trello](https://trello.com/invite/b/670f2e3a03f362e09e2abb63/ATTI78fe058e2b7c53a4dc9f7198a9f9980947A758DC/writing-test-scenarios-training) |  
+| **Test Cases**           | Spreadsheet of manually written test cases.    | [View Test Cases](https://docs.google.com/spreadsheets/d/1_Be5xfs6CQ5xRMDp_2p4yimslOD6HNBFk2HHFUVuTjE/edit?usp=sharing)                             |

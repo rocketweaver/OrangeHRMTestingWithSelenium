@@ -32,10 +32,10 @@ public class ValidPersonalDetails {
         loginPage = new LoginPage(driver);
 
         //Login
-        driver.get("http://orangehrm-5.7.test/auth/login");
+        driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        loginPage.setUsername("admin123");
-        loginPage.setPassword("a:@oN8N!E1!4");
+        loginPage.setUsername("Admin");
+        loginPage.setPassword("admin123");
         loginPage.login();
 
         // Go to My Info page
@@ -68,18 +68,20 @@ public class ValidPersonalDetails {
         personalDetailPage.setEmployeeId("0003");
         personalDetailPage.setOtherId("0003");
         personalDetailPage.setDriverLicense("H4H4BD");
-        personalDetailPage.setDriverLicenseYear(2024);
-        personalDetailPage.setDriverLicenseMonth(10);
-        personalDetailPage.setDriverLicenseDay(29);
-        personalDetailPage.setBirthYear(2002);
-        personalDetailPage.setBirthMonth(10);
-        personalDetailPage.setBirthDay(12);
+        personalDetailPage.setDriverLicenseDay(5);
+        personalDetailPage.setDriverLicenseYear("2024");
+        personalDetailPage.setDriverLicenseMonth("2");
+        personalDetailPage.setNationality("Afghan");
+        personalDetailPage.setMaritalStatus("Married");
+        personalDetailPage.setBirthDay(11);
+        personalDetailPage.setBirthYear("2002");
+        personalDetailPage.setBirthMonth("2");
         personalDetailPage.setGender("Female");
-        personalDetailPage.updatePersonalDetails();
+        personalDetailPage.updatePersonalDetails(true);
     }
 
     @Test (priority = 1, description = "Update personal details data with only required fields.")
-    public void submitPersonalDetailsWithRequiredOnly(){
+    public void submitPersonalDetailsWithRequiredOnly() {
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFirstName("Bruce");
         personalDetailPage.setLastName("Wayn");
@@ -91,7 +93,7 @@ public class ValidPersonalDetails {
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFilePath("/src/test/resources/500-KB.pdf");
         personalDetailPage.setComment("");
-        personalDetailPage.addAttachmentFile();
+        personalDetailPage.addAttachmentFile(true);
     }
 
     @Test(priority = 3, description = "Upload attachment file with comment.")
@@ -99,13 +101,13 @@ public class ValidPersonalDetails {
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFilePath("/src/test/resources/500-KB.pdf");
         personalDetailPage.setComment("This is my first uploaded file");
-        personalDetailPage.addAttachmentFile();
+        personalDetailPage.addAttachmentFile(true);
     }
 
     @Test(priority = 4, description = "Upload profile picture.")
     public void uploadProfilePicture() {
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFilePath("/src/test/resources/profile2.jpg");
-        personalDetailPage.uploadProfilePicture();
+        personalDetailPage.uploadProfilePicture(true);
     }
 }

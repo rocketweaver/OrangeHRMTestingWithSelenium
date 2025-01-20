@@ -18,12 +18,13 @@ public class ValidLogin {
         // Basic setup
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
 
         // Instantiate obj
         loginPage = new LoginPage(driver);
 
         // Go to Login Page
-        driver.get("http://orangehrm-5.7.test/auth/login");
+        driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
 
@@ -34,8 +35,8 @@ public class ValidLogin {
 
     @Test (priority = 0)
     public void loginWithValidCredential() {
-        loginPage.setUsername("admin123");
-        loginPage.setPassword("a:@oN8N!E1!4");
+        loginPage.setUsername("Admin");
+        loginPage.setPassword("admin123");
         loginPage.login();
     }
 
@@ -44,6 +45,6 @@ public class ValidLogin {
         driver.findElement(By.className("orangehrm-login-forgot-header")).click();
 
         String currentUrl = driver.getCurrentUrl();
-        Assert.assertNotEquals(currentUrl, "http://orangehrm-5.7.test/auth/login");
+        Assert.assertNotEquals(currentUrl, "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
     }
 }

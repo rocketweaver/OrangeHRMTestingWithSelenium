@@ -34,10 +34,10 @@ public class InvalidPersonalDetails {
         loginPage = new LoginPage(driver);
 
         //Login
-        driver.get("http://orangehrm-5.7.test/auth/login");
+        driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        loginPage.setUsername("admin123");
-        loginPage.setPassword("a:@oN8N!E1!4");
+        loginPage.setUsername("Admin");
+        loginPage.setPassword("admin123");
         loginPage.login();
 
         // Go to My Info page
@@ -70,14 +70,16 @@ public class InvalidPersonalDetails {
         personalDetailPage.setEmployeeId("0001");
         personalDetailPage.setOtherId("0002");
         personalDetailPage.setDriverLicense("H4H4BD");
-        personalDetailPage.setDriverLicenseYear(2024);
-        personalDetailPage.setDriverLicenseMonth(10);
+        personalDetailPage.setDriverLicenseYear("2024");
+        personalDetailPage.setDriverLicenseMonth("10");
         personalDetailPage.setDriverLicenseDay(29);
-        personalDetailPage.setBirthYear(2002);
-        personalDetailPage.setBirthMonth(10);
-        personalDetailPage.setBirthDay(12);;
+        personalDetailPage.setNationality("Afghan");
+        personalDetailPage.setMaritalStatus("Married");
+        personalDetailPage.setBirthYear("2002");
+        personalDetailPage.setBirthMonth("10");
+        personalDetailPage.setBirthDay(12);
         personalDetailPage.setGender("Female");
-        personalDetailPage.updatePersonalDetails();
+        personalDetailPage.updatePersonalDetails(false);
         personalDetailPage.compareErrorMsg("Required");
     }
 
@@ -90,14 +92,16 @@ public class InvalidPersonalDetails {
         personalDetailPage.setEmployeeId("0001");
         personalDetailPage.setOtherId("0002");
         personalDetailPage.setDriverLicense("H4H4BD");
-        personalDetailPage.setDriverLicenseYear(2024);
-        personalDetailPage.setDriverLicenseMonth(10);
+        personalDetailPage.setDriverLicenseYear("2024");
+        personalDetailPage.setDriverLicenseMonth("10");
         personalDetailPage.setDriverLicenseDay(29);
-        personalDetailPage.setBirthYear(2002);
-        personalDetailPage.setBirthMonth(10);
-        personalDetailPage.setBirthDay(12);;
+        personalDetailPage.setNationality("Afghan");
+        personalDetailPage.setMaritalStatus("Married");
+        personalDetailPage.setBirthYear("2002");
+        personalDetailPage.setBirthMonth("10");
+        personalDetailPage.setBirthDay(12);
         personalDetailPage.setGender("Female");
-        personalDetailPage.updatePersonalDetails();
+        personalDetailPage.updatePersonalDetails(false);
         personalDetailPage.compareErrorMsg("Required");
     }
 
@@ -110,14 +114,16 @@ public class InvalidPersonalDetails {
         personalDetailPage.setEmployeeId("0001");
         personalDetailPage.setOtherId("0002");
         personalDetailPage.setDriverLicense("H4H4BD");
-        personalDetailPage.setDriverLicenseYear(2024);
-        personalDetailPage.setDriverLicenseMonth(10);
+        personalDetailPage.setDriverLicenseYear("2024");
+        personalDetailPage.setDriverLicenseMonth("10");
         personalDetailPage.setDriverLicenseDay(29);
-        personalDetailPage.setBirthYear(2002);
-        personalDetailPage.setBirthMonth(10);
-        personalDetailPage.setBirthDay(12);;
+        personalDetailPage.setNationality("Afghan");
+        personalDetailPage.setMaritalStatus("Married");
+        personalDetailPage.setBirthYear("2002");
+        personalDetailPage.setBirthMonth("10");
+        personalDetailPage.setBirthDay(12);
         personalDetailPage.setGender("Female");
-        personalDetailPage.updatePersonalDetails();
+        personalDetailPage.updatePersonalDetails(false);
         personalDetailPage.compareErrorMsg("Should not exceed 30 characters");
     }
 
@@ -130,14 +136,16 @@ public class InvalidPersonalDetails {
         personalDetailPage.setEmployeeId("0001");
         personalDetailPage.setOtherId("0002");
         personalDetailPage.setDriverLicense("H4H4BD");
-        personalDetailPage.setDriverLicenseYear(2024);
-        personalDetailPage.setDriverLicenseMonth(10);
+        personalDetailPage.setDriverLicenseYear("2024");
+        personalDetailPage.setDriverLicenseMonth("10");
         personalDetailPage.setDriverLicenseDay(29);
-        personalDetailPage.setBirthYear(2002);
-        personalDetailPage.setBirthMonth(10);
-        personalDetailPage.setBirthDay(12);;
+        personalDetailPage.setNationality("Afghan");
+        personalDetailPage.setMaritalStatus("Married");
+        personalDetailPage.setBirthYear("2002");
+        personalDetailPage.setBirthMonth("10");
+        personalDetailPage.setBirthDay(12);
         personalDetailPage.setGender("Female");
-        personalDetailPage.updatePersonalDetails();
+        personalDetailPage.updatePersonalDetails(false);
         personalDetailPage.compareErrorMsg("Should not exceed 30 characters");
     }
 
@@ -150,14 +158,16 @@ public class InvalidPersonalDetails {
         personalDetailPage.setEmployeeId("0001");
         personalDetailPage.setOtherId("0002");
         personalDetailPage.setDriverLicense("H4H4BD");
-        personalDetailPage.setDriverLicenseYear(2024);
-        personalDetailPage.setDriverLicenseMonth(10);
+        personalDetailPage.setDriverLicenseYear("2024");
+        personalDetailPage.setDriverLicenseMonth("10");
         personalDetailPage.setDriverLicenseDay(29);
-        personalDetailPage.setBirthYear(2002);
-        personalDetailPage.setBirthMonth(10);
-        personalDetailPage.setBirthDay(12);;
+        personalDetailPage.setNationality("Afghan");
+        personalDetailPage.setMaritalStatus("Married");
+        personalDetailPage.setBirthYear("2002");
+        personalDetailPage.setBirthMonth("10");
+        personalDetailPage.setBirthDay(12);
         personalDetailPage.setGender("Female");
-        personalDetailPage.updatePersonalDetails();
+        personalDetailPage.updatePersonalDetails(false);
         personalDetailPage.compareErrorMsg("Should not exceed 30 characters");
     }
 
@@ -170,14 +180,16 @@ public class InvalidPersonalDetails {
         personalDetailPage.setEmployeeId("0001");
         personalDetailPage.setOtherId("0002");
         personalDetailPage.setDriverLicense("H4H4BD");
-        personalDetailPage.setDriverLicenseYear(2024);
-        personalDetailPage.setDriverLicenseMonth(10);
+        personalDetailPage.setDriverLicenseYear("2024");
+        personalDetailPage.setDriverLicenseMonth("10");
         personalDetailPage.setDriverLicenseDay(29);
-        personalDetailPage.setBirthYear(2002);
-        personalDetailPage.setBirthMonth(10);
-        personalDetailPage.setBirthDay(12);;
+        personalDetailPage.setNationality("Afghan");
+        personalDetailPage.setMaritalStatus("Married");
+        personalDetailPage.setBirthYear("2002");
+        personalDetailPage.setBirthMonth("10");
+        personalDetailPage.setBirthDay(12);
         personalDetailPage.setGender("Female");
-        personalDetailPage.updatePersonalDetails();
+        personalDetailPage.updatePersonalDetails(false);
         personalDetailPage.compareErrorMsg("Invalid characters are not allowed");
     }
 
@@ -190,14 +202,14 @@ public class InvalidPersonalDetails {
         personalDetailPage.setEmployeeId("0001");
         personalDetailPage.setOtherId("0002");
         personalDetailPage.setDriverLicense("H4H4BD");
-        personalDetailPage.setDriverLicenseYear(2024);
-        personalDetailPage.setDriverLicenseMonth(10);
-        personalDetailPage.setDriverLicenseDay(29);
-        personalDetailPage.setBirthYear(2002);
-        personalDetailPage.setBirthMonth(10);
-        personalDetailPage.setBirthDay(12);;
+        personalDetailPage.setDriverLicenseYear("2024");
+        personalDetailPage.setDriverLicenseMonth("10");
+        personalDetailPage.setNationality("Afghan");
+        personalDetailPage.setMaritalStatus("Married");
+        personalDetailPage.setBirthMonth("10");
+        personalDetailPage.setBirthDay(12);
         personalDetailPage.setGender("Female");
-        personalDetailPage.updatePersonalDetails();
+        personalDetailPage.updatePersonalDetails(false);
         personalDetailPage.compareErrorMsg("Invalid characters are not allowed");
     }
 
@@ -210,14 +222,15 @@ public class InvalidPersonalDetails {
         personalDetailPage.setEmployeeId("00010001000100010001000100010001");
         personalDetailPage.setOtherId("0002");
         personalDetailPage.setDriverLicense("H4H4BD");
-        personalDetailPage.setDriverLicenseYear(2024);
-        personalDetailPage.setDriverLicenseMonth(10);
+        personalDetailPage.setDriverLicenseYear("2024");
+        personalDetailPage.setDriverLicenseMonth("10");
         personalDetailPage.setDriverLicenseDay(29);
-        personalDetailPage.setBirthYear(2002);
-        personalDetailPage.setBirthMonth(10);
-        personalDetailPage.setBirthDay(12);;
+        personalDetailPage.setNationality("Afghan");
+        personalDetailPage.setMaritalStatus("Married");
+        personalDetailPage.setBirthMonth("10");
+        personalDetailPage.setBirthDay(12);
         personalDetailPage.setGender("Female");
-        personalDetailPage.updatePersonalDetails();
+        personalDetailPage.updatePersonalDetails(false);
         personalDetailPage.compareErrorMsg("Should not exceed 10 characters");
     }
 
@@ -228,16 +241,18 @@ public class InvalidPersonalDetails {
         personalDetailPage.setMiddleName("Putri");
         personalDetailPage.setLastName("Jenaka");
         personalDetailPage.setEmployeeId("001");
-        personalDetailPage.setOtherId("000100010001000100010001000100010001000100010001000100010001000100010001000100010001000100010001");
+        personalDetailPage.setOtherId("00010001000100010001000100010001");
         personalDetailPage.setDriverLicense("H4H4BD");
-        personalDetailPage.setDriverLicenseYear(2024);
-        personalDetailPage.setDriverLicenseMonth(10);
+        personalDetailPage.setDriverLicenseYear("2024");
+        personalDetailPage.setDriverLicenseMonth("10");
         personalDetailPage.setDriverLicenseDay(29);
-        personalDetailPage.setBirthYear(2002);
-        personalDetailPage.setBirthMonth(10);
-        personalDetailPage.setBirthDay(12);;
+        personalDetailPage.setNationality("Afghan");
+        personalDetailPage.setMaritalStatus("Married");
+        personalDetailPage.setBirthYear("2002");
+        personalDetailPage.setBirthMonth("10");
+        personalDetailPage.setBirthDay(12);
         personalDetailPage.setGender("Female");
-        personalDetailPage.updatePersonalDetails();
+        personalDetailPage.updatePersonalDetails(false);
         personalDetailPage.compareErrorMsg("Should not exceed 30 characters");
     }
 
@@ -250,20 +265,21 @@ public class InvalidPersonalDetails {
         personalDetailPage.setEmployeeId("001");
         personalDetailPage.setOtherId("0002");
         personalDetailPage.setDriverLicense("H4H4BDH4H4BDH4H4BDH4H4BDH4H4BDH4H4BDH4H4BDH4H4BD");
-        personalDetailPage.setDriverLicenseYear(2024);
-        personalDetailPage.setDriverLicenseMonth(10);
+        personalDetailPage.setDriverLicenseYear("2024");
+        personalDetailPage.setDriverLicenseMonth("10");
         personalDetailPage.setDriverLicenseDay(29);
-        personalDetailPage.setBirthYear(2002);
-        personalDetailPage.setBirthMonth(10);
-        personalDetailPage.setBirthDay(12);;
+        personalDetailPage.setNationality("Afghan");
+        personalDetailPage.setMaritalStatus("Married");
+        personalDetailPage.setBirthYear("2002");
+        personalDetailPage.setBirthMonth("10");
+        personalDetailPage.setBirthDay(12);
         personalDetailPage.setGender("Female");
-        personalDetailPage.updatePersonalDetails();
+        personalDetailPage.updatePersonalDetails(false);
         personalDetailPage.compareErrorMsg("Should not exceed 30 characters");
     }
 
     @Test (priority = 6, description = "Verify that updating personal details fail when Middle Name is using invalid format")
     public void middleNameWithInvalidFormat() {
-
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFirstName("Lisa");
         personalDetailPage.setMiddleName("Putri");
@@ -271,20 +287,21 @@ public class InvalidPersonalDetails {
         personalDetailPage.setEmployeeId("0001");
         personalDetailPage.setOtherId("0002");
         personalDetailPage.setDriverLicense("H4H4BD");
-        personalDetailPage.setDriverLicenseYear(2024);
-        personalDetailPage.setDriverLicenseMonth(10);
+        personalDetailPage.setDriverLicenseYear("2024");
+        personalDetailPage.setDriverLicenseMonth("10");
         personalDetailPage.setDriverLicenseDay(29);
-        personalDetailPage.setBirthYear(2002);
-        personalDetailPage.setBirthMonth(10);
+        personalDetailPage.setNationality("Afghan");
+        personalDetailPage.setMaritalStatus("Married");
+        personalDetailPage.setBirthYear("2002");
+        personalDetailPage.setBirthMonth("10");
         personalDetailPage.setBirthDay(12);
         personalDetailPage.setGender("Female");
-        personalDetailPage.updatePersonalDetails();
+        personalDetailPage.updatePersonalDetails(false);
         personalDetailPage.compareErrorMsg("Invalid characters are not allowed");
     }
 
     @Test (priority = 6, description = "Verify that updating personal details fail when Date of Birth is on the future or current")
     public void inputFutureBirthDate() {
-
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFirstName("Lisa");
         personalDetailPage.setMiddleName("Putri");
@@ -292,14 +309,16 @@ public class InvalidPersonalDetails {
         personalDetailPage.setEmployeeId("0001");
         personalDetailPage.setOtherId("0002");
         personalDetailPage.setDriverLicense("H4H4BD");
-        personalDetailPage.setDriverLicenseYear(2024);
-        personalDetailPage.setDriverLicenseMonth(10);
+        personalDetailPage.setDriverLicenseYear("2024");
+        personalDetailPage.setDriverLicenseMonth("10");
         personalDetailPage.setDriverLicenseDay(29);
-        personalDetailPage.setBirthYear(2026);
-        personalDetailPage.setBirthMonth(10);
+        personalDetailPage.setNationality("Afghan");
+        personalDetailPage.setMaritalStatus("Married");
+        personalDetailPage.setBirthYear("2026");
+        personalDetailPage.setBirthMonth("10");
         personalDetailPage.setBirthDay(12);
         personalDetailPage.setGender("Female");
-        personalDetailPage.updatePersonalDetails();
+        personalDetailPage.updatePersonalDetails(false);
         personalDetailPage.compareErrorMsg("Date of Birth cannot be in the future.");
     }
 
@@ -312,14 +331,16 @@ public class InvalidPersonalDetails {
         personalDetailPage.setEmployeeId("0001");
         personalDetailPage.setOtherId("0002");
         personalDetailPage.setDriverLicense("H4H4BD");
-        personalDetailPage.setDriverLicenseYear(1997);
-        personalDetailPage.setDriverLicenseMonth(10);
+        personalDetailPage.setDriverLicenseYear("1997");
+        personalDetailPage.setDriverLicenseMonth("10");
         personalDetailPage.setDriverLicenseDay(29);
-        personalDetailPage.setBirthYear(2002);
-        personalDetailPage.setBirthMonth(10);
+        personalDetailPage.setNationality("Afghan");
+        personalDetailPage.setMaritalStatus("Married");
+        personalDetailPage.setBirthYear("2002");
+        personalDetailPage.setBirthMonth("10");
         personalDetailPage.setBirthDay(12);
         personalDetailPage.setGender("Female");
-        personalDetailPage.updatePersonalDetails();
+        personalDetailPage.updatePersonalDetails(false);
         personalDetailPage.compareErrorMsg("Driver License Expiry Date cannot be in the future.");
     }
 
@@ -332,14 +353,16 @@ public class InvalidPersonalDetails {
         personalDetailPage.setEmployeeId("0001");
         personalDetailPage.setOtherId("0002");
         personalDetailPage.setDriverLicense("H4H4BD");
-        personalDetailPage.setDriverLicenseYear(202200);
-        personalDetailPage.setDriverLicenseMonth(10);
+        personalDetailPage.setDriverLicenseYear("202200");
+        personalDetailPage.setDriverLicenseMonth("10");
         personalDetailPage.setDriverLicenseDay(29);
-        personalDetailPage.setBirthYear(2004);
-        personalDetailPage.setBirthMonth(9);
+        personalDetailPage.setNationality("Afghan");
+        personalDetailPage.setMaritalStatus("Married");
+        personalDetailPage.setBirthYear("2004");
+        personalDetailPage.setBirthMonth("September");
         personalDetailPage.setBirthDay(12);
         personalDetailPage.setGender("Female");
-        personalDetailPage.updatePersonalDetails();
+        personalDetailPage.updatePersonalDetails(false);
         personalDetailPage.compareErrorMsg("Should be a valid date in yyyy-mm-dd format");
     }
 
@@ -352,14 +375,16 @@ public class InvalidPersonalDetails {
         personalDetailPage.setEmployeeId("0001");
         personalDetailPage.setOtherId("0002");
         personalDetailPage.setDriverLicense("H4H4BD");
-        personalDetailPage.setDriverLicenseYear(2024);
-        personalDetailPage.setDriverLicenseMonth(10);
+        personalDetailPage.setDriverLicenseYear("2024");
+        personalDetailPage.setDriverLicenseMonth("10");
         personalDetailPage.setDriverLicenseDay(29);
-        personalDetailPage.setBirthYear(202);
-        personalDetailPage.setBirthMonth(33);
+        personalDetailPage.setNationality("Afghan");
+        personalDetailPage.setMaritalStatus("Married");
+        personalDetailPage.setBirthYear("202");
+        personalDetailPage.setBirthMonth("10");
         personalDetailPage.setBirthDay(12);
         personalDetailPage.setGender("Female");
-        personalDetailPage.updatePersonalDetails();
+        personalDetailPage.updatePersonalDetails(false);
         personalDetailPage.compareErrorMsg("Should be a valid date in yyyy-mm-dd format");
     }
 
@@ -368,7 +393,7 @@ public class InvalidPersonalDetails {
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFilePath("/src/test/resources/unsupported_attachment.webp");
         personalDetailPage.setComment("Test");
-        personalDetailPage.addAttachmentFile();
+        personalDetailPage.addAttachmentFile(false);
         personalDetailPage.compareErrorMsg("File type not allowed");
     }
 
@@ -377,7 +402,7 @@ public class InvalidPersonalDetails {
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFilePath("/src/test/resources/500-KB.pdf");
         personalDetailPage.setComment("z8L3kpV5YqTdRJ1xmNW9GZoF2AsCXHb67EtM4ayQPwvDKgUjOcIfnBhrlz0uYXpJWQV5k8L3dRP29GTNCmKFoAMZ6ab7sEV1XYqh4tyJduwgkUoFxHrnvl0cMfqp2BC98PY3WJA6KToLRV57XGN1hzYEMa4tXyb9wdJkgqpUOHclM7F2N8rZv0oWXz8L3kpV5YqTdRJ1xmNW9GZoF2AsCXHb67EtM4ayQPwvDKgUjOcIfnBhrlz0uYXpJWQV5k8L3dRP29GTNCmKFoAMZ6ab7sEV1XYqh4tyJduwgkUoFxHrnvl0cMfqp2BC98PY3WJA6KToLRV57XGN1hzYEMa4tXyb9wdJkgqpUOHclM7F2N8rZv0oWXz8L3kpV5YqTdRJ1xmNW9GZoF2AsCXHb67EtM4ayQPwvDKgUjOcIfnBhrlz0uYXpJWQV5k8L3dRP29GTNCmKFoAMZ6ab7sEV1XYqh4tyJduwgkUoFxHrnvl0cMfqp2BC98PY3WJA6KToLRV57XGN1hzYEMa4tXyb9wdJkgqpUOHclM7F2N8rZv0oWX");
-        personalDetailPage.addAttachmentFile();
+        personalDetailPage.addAttachmentFile(false);
         personalDetailPage.compareErrorMsg("Should not exceed 200 characters");
     }
 
@@ -386,7 +411,7 @@ public class InvalidPersonalDetails {
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFilePath("/src/test/resources/2mb.jpg");
         personalDetailPage.setComment("Test");
-        personalDetailPage.addAttachmentFile();
+        personalDetailPage.addAttachmentFile(false);
         personalDetailPage.compareErrorMsg("Attachment Size Exceeded");
     }
 
@@ -394,7 +419,7 @@ public class InvalidPersonalDetails {
     public void uploadProfilePictureWithUnsupportedFormat() {
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFilePath("/src/test/resources/unsupported_attachment.webp");
-        personalDetailPage.uploadProfilePicture();
+        personalDetailPage.uploadProfilePicture(false);
         personalDetailPage.compareErrorMsg("File type not allowed");
     }
 
@@ -402,7 +427,7 @@ public class InvalidPersonalDetails {
     public void profilePictureExceedingSizeLimit() {
         personalDetailPage = new PersonalDetailsPage(driver);
         personalDetailPage.setFilePath("/src/test/resources/2mb.jpg");
-        personalDetailPage.uploadProfilePicture();
+        personalDetailPage.uploadProfilePicture(false);
         personalDetailPage.compareErrorMsg("Attachment Size Exceeded");
     }
 }
