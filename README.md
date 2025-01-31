@@ -31,7 +31,7 @@ This project uses the following tools and technologies:
 | **Resource**             | **Description**                                | **Link**                                                                                                                                            |  
 |--------------------------|------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|  
 | **Orange HRM Live Demo** | The primary application under test.             | [Orange HRM Live Demo App](https://opensource-demo.orangehrmlive.com/web/index.php/auth/login)                                                      |  
-| **Test Scenarios**       | Trello board detailing test scenarios.         | [View on Trello](https://trello.com/invite/b/670f2e3a03f362e09e2abb63/ATTI78fe058e2b7c53a4dc9f7198a9f9980947A758DC/writing-test-scenarios-training) |  
+| **Test Scenarios**       | Trello board detailing test scenarios.         | [View on Trello - Must Request](https://trello.com/invite/b/670f2e3a03f362e09e2abb63/ATTI78fe058e2b7c53a4dc9f7198a9f9980947A758DC/writing-test-scenarios-training) |  
 | **Test Cases**           | Spreadsheet of manually written test cases.    | [View Test Cases](https://docs.google.com/spreadsheets/d/1_Be5xfs6CQ5xRMDp_2p4yimslOD6HNBFk2HHFUVuTjE/edit?usp=sharing)                             |
 
 ---
